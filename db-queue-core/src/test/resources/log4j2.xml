@@ -5,6 +5,16 @@
         <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout pattern="[%d{yyyy-MM-dd'T'HH:mm:ss.SSSZZZ}] %-5p [%t] [%c{1}] %m%n%ex"/>
         </Console>
+        <File name="TaskListenerLogFile" fileName="target/task-listener.log" append="true">
+            <PatternLayout>
+                <Pattern>%-5p [%t] [%c{1}] %m%n%ex</Pattern>
+            </PatternLayout>
+        </File>
+        <File name="ThreadListenerLogFile" fileName="target/thread-listener.log" append="true">
+            <PatternLayout>
+                <Pattern>%-5p [%t] [%c{1}] %m%n%ex</Pattern>
+            </PatternLayout>
+        </File>
 
     </Appenders>
 
@@ -12,5 +22,11 @@
         <Root level="INFO">
             <AppenderRef ref="Console"/>
         </Root>
+        <logger name="ru.yoomoney.tech.dbqueue.config.impl.LoggingTaskLifecycleListener" level="DEBUG">
+            <AppenderRef ref="TaskListenerLogFile"/>
+        </logger>
+        <logger name="ru.yoomoney.tech.dbqueue.config.impl.LoggingThreadLifecycleListener" level="DEBUG">
+            <AppenderRef ref="ThreadListenerLogFile"/>
+        </logger>
     </Loggers>
 </Configuration>

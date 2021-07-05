@@ -11,7 +11,7 @@ Library is available on [Maven Central](https://search.maven.org/)
 
 **Gradle**
 ```
-implementation 'ru.yoomoney.tech:db-queue:12.0.0'
+implementation 'ru.yoomoney.tech:db-queue:13.0.0'
 ```
 
 **Maven**

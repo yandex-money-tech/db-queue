@@ -1,2 +1,5 @@
-include 'db-queue-core', 'db-queue-spring'
+include 'db-queue-core',
+        'db-queue-spring',
+        'db-queue-brave',
+        'db-queue-test'
 

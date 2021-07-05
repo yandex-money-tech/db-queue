@@ -3,6 +3,7 @@ package ru.yoomoney.tech.dbqueue.config;
 import ru.yoomoney.tech.dbqueue.settings.QueueLocation;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Listener for task processing thread in the queue.
@@ -62,5 +63,5 @@ public interface ThreadLifecycleListener {
      * @param location Queue location.
      * @param exc      An error caused the crash.
      */
-    void crashed(@Nonnull QueueShardId shardId, @Nonnull QueueLocation location, @Nonnull Throwable exc);
+    void crashed(@Nonnull QueueShardId shardId, @Nonnull QueueLocation location, @Nullable Throwable exc);
 }

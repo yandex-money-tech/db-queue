@@ -50,8 +50,8 @@ public final class QueueSettings {
                           @Nullable ReenqueueRetrySettings reenqueueRetrySettings,
                           @Nullable ProcessingMode processingMode,
                           @Nullable Map<String, String> additionalSettings) {
-        this.noTaskTimeout = Objects.requireNonNull(noTaskTimeout);
-        this.betweenTaskTimeout = Objects.requireNonNull(betweenTaskTimeout);
+        this.noTaskTimeout = Objects.requireNonNull(noTaskTimeout, "noTaskTimeout cannot be null");
+        this.betweenTaskTimeout = Objects.requireNonNull(betweenTaskTimeout, "betweenTaskTimeout cannot be null");
         this.threadCount = threadCount == null ? 1 : threadCount;
         this.fatalCrashTimeout = fatalCrashTimeout == null ? DEFAULT_TIMEOUT_ON_FATAL_CRASH : fatalCrashTimeout;
         this.retryType = retryType == null ? TaskRetryType.GEOMETRIC_BACKOFF : retryType;

@@ -1,5 +1,7 @@
 package ru.yoomoney.tech.dbqueue.config.impl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ru.yoomoney.tech.dbqueue.config.QueueShardId;
 import ru.yoomoney.tech.dbqueue.config.ThreadLifecycleListener;
 import ru.yoomoney.tech.dbqueue.settings.QueueLocation;
@@ -8,39 +10,31 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /**
- * Empty listener for task processing thread in the queue.
+ * Thread listener with logging support
  *
  * @author Oleg Kandaurov
- * @since 02.10.2019
+ * @since 11.06.2021
  */
-public class NoopThreadLifecycleListener implements ThreadLifecycleListener {
+public class LoggingThreadLifecycleListener implements ThreadLifecycleListener {
 
-    private static final NoopThreadLifecycleListener INSTANCE = new NoopThreadLifecycleListener();
-
-    @Nonnull
-    public static NoopThreadLifecycleListener getInstance() {
-        return INSTANCE;
-    }
+    private static final Logger log = LoggerFactory.getLogger(LoggingThreadLifecycleListener.class);
 
     @Override
     public void started(@Nonnull QueueShardId shardId, @Nonnull QueueLocation location) {
-
     }
 
     @Override
-    public void executed(QueueShardId shardId, QueueLocation location,
-                         boolean taskProcessed, long threadBusyTime) {
-
+    public void executed(QueueShardId shardId, QueueLocation location, boolean taskProcessed, long threadBusyTime) {
     }
 
     @Override
     public void finished(@Nonnull QueueShardId shardId, @Nonnull QueueLocation location) {
-
     }
 
     @Override
     public void crashed(@Nonnull QueueShardId shardId, @Nonnull QueueLocation location,
                         @Nullable Throwable exc) {
-
+        log.error("fatal error in queue thread: shardId={}, location={}", shardId.asString(),
+                location, exc);
     }
 }

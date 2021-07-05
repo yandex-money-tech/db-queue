@@ -5,6 +5,7 @@ import ru.yoomoney.tech.dbqueue.api.TaskRecord;
 import ru.yoomoney.tech.dbqueue.settings.QueueLocation;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Listener for task processing lifecycle.
@@ -86,6 +87,6 @@ public interface TaskLifecycleListener {
      * @param exc        An error caused the crash.
      */
     void crashed(@Nonnull QueueShardId shardId, @Nonnull QueueLocation location, @Nonnull TaskRecord taskRecord,
-                 @Nonnull Exception exc);
+                 @Nullable Exception exc);
 
 }
